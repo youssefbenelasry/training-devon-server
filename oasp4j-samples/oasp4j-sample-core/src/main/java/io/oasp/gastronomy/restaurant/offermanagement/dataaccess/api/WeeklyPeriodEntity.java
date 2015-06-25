@@ -1,5 +1,7 @@
 package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api;
 
+import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.datatype.DayOfWeek;
 
 import javax.validation.constraints.Max;
@@ -11,7 +13,7 @@ import javax.validation.constraints.Min;
  *
  * @author mbrunnli
  */
-public class WeeklyPeriodEntity {
+public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements WeeklyPeriod {
 
   private DayOfWeek startingDay;
 
@@ -20,6 +22,8 @@ public class WeeklyPeriodEntity {
   private DayOfWeek endingDay;
 
   private int endingHour;
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * @return startingDay
@@ -40,8 +44,8 @@ public class WeeklyPeriodEntity {
   /**
    * @return startingHour
    */
-  @Max(24)
-  @Min(0)
+  @Max(value = 24)
+  @Min(value = 0)
   public int getStartingHour() {
 
     return this.startingHour;
@@ -74,8 +78,8 @@ public class WeeklyPeriodEntity {
   /**
    * @return endingHour
    */
-  @Max(24)
-  @Min(0)
+  @Max(value = 24)
+  @Min(value = 0)
   public int getEndingHour() {
 
     return this.endingHour;

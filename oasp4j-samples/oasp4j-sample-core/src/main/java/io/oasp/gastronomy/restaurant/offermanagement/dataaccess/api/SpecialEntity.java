@@ -2,19 +2,22 @@ package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api;
 
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
 
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
  *
  * @author mbrunnli
  */
-public class SpecialEntity {
+public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
 
   private OfferEntity offer;
 
   private WeeklyPeriodEntity activePeriod;
 
   private Money specialPrice;
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * @return offer
