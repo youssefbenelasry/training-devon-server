@@ -2,14 +2,14 @@ package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api;
 
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
-import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
 
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
  *
  * @author mbrunnli
  */
-public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
+public class SpecialEntity {
 
   private OfferEntity offer;
 
@@ -17,10 +17,10 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
 
   private Money specialPrice;
 
-  private static final long serialVersionUID = 1L;
-
   /**
-   * @return offer
+   * Returns the {@link Offer} this special applies for.
+   *
+   * @return offer {@link Offer} this special applies for.
    */
   public OfferEntity getOffer() {
 
@@ -28,7 +28,9 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * @param offer new value of {@link #getOffer}.
+   * Sets the {@link Offer} this special applies for.
+   *
+   * @param offer the {@link Offer} this special applies for.
    */
   public void setOffer(OfferEntity offer) {
 
@@ -36,7 +38,9 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * @return activePeriod
+   * Returns the {@link WeeklyPeriodEntity active period} this special applies for.
+   *
+   * @return activePeriod the {@link WeeklyPeriodEntity active period} this special applies for.
    */
   public WeeklyPeriodEntity getActivePeriod() {
 
@@ -44,7 +48,9 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * @param activePeriod new value of {@link #getActivePeriod}.
+   * Sets the {@link WeeklyPeriodEntity active period} this special applies for.
+   *
+   * @param activePeriod the {@link WeeklyPeriodEntity active period} this special applies for.
    */
   public void setActivePeriod(WeeklyPeriodEntity activePeriod) {
 
@@ -52,7 +58,9 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * @return specialPrice
+   * Returns the new {@link Money special price} for the {@link Offer}.
+   * 
+   * @return specialPrice the new {@link Money special price} for the {@link Offer}.
    */
   public Money getSpecialPrice() {
 
@@ -60,7 +68,9 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * @param specialPrice new value of {@link #getSpecialPrice}.
+   * Sets the new {@link Money special price} for the {@link Offer}.
+   * 
+   * @param specialPrice the new {@link Money special price} for the {@link Offer}.
    */
   public void setSpecialPrice(Money specialPrice) {
 

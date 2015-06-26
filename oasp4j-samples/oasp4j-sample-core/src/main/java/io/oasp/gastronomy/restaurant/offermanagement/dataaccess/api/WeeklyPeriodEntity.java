@@ -1,7 +1,5 @@
 package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api;
 
-import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
-import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.datatype.DayOfWeek;
 
 import javax.validation.constraints.Max;
@@ -13,7 +11,7 @@ import javax.validation.constraints.Min;
  *
  * @author mbrunnli
  */
-public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements WeeklyPeriod {
+public class WeeklyPeriodEntity {
 
   private DayOfWeek startingDay;
 
@@ -23,10 +21,10 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
 
   private int endingHour;
 
-  private static final long serialVersionUID = 1L;
-
   /**
-   * @return startingDay
+   * Returns the {@link DayOfWeek} the period starts.
+   *
+   * @return startingDay the {@link DayOfWeek} the period starts.
    */
   public DayOfWeek getStartingDay() {
 
@@ -34,7 +32,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @param startingDay new value of {@link #getStartingDay}.
+   * Sets the {@link DayOfWeek} the period starts.
+   *
+   * @param startingDay the {@link DayOfWeek} the period starts.
    */
   public void setStartingDay(DayOfWeek startingDay) {
 
@@ -42,7 +42,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @return startingHour
+   * Returns the hour (in 24h-format) the period starts.
+   *
+   * @return startingHour the hour (in 24h-format) the period starts.
    */
   @Max(value = 24)
   @Min(value = 0)
@@ -52,7 +54,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @param startingHour new value of {@link #getStartingHour}.
+   * Sets the hour (in 24h-format) the period starts.
+   *
+   * @param startingHour the hour (in 24h-format) the period starts.
    */
   public void setStartingHour(int startingHour) {
 
@@ -60,7 +64,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @return endingDay
+   * Returns the {@link DayOfWeek} the period ends.
+   *
+   * @return endingDay the {@link DayOfWeek} the period ends.
    */
   public DayOfWeek getEndingDay() {
 
@@ -68,7 +74,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @param endingDay new value of {@link #getEndingDay}.
+   * Sets the {@link DayOfWeek} the period ends.
+   *
+   * @param endingDay the {@link DayOfWeek} the period ends.
    */
   public void setEndingDay(DayOfWeek endingDay) {
 
@@ -76,7 +84,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @return endingHour
+   * Returns the hour (in 24h-format) the period ends.
+   *
+   * @return endingHour the hour (in 24h-format) the period ends.
    */
   @Max(value = 24)
   @Min(value = 0)
@@ -86,7 +96,9 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
   }
 
   /**
-   * @param endingHour new value of {@link #getEndingHour}.
+   * Returns the hour (in 24h-format) the period ends.
+   *
+   * @param endingHour the hour (in 24h-format) the period ends.
    */
   public void setEndingHour(int endingHour) {
 
