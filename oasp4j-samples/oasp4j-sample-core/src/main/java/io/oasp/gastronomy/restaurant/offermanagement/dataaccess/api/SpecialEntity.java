@@ -3,19 +3,24 @@ package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api;
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
+
+import javax.persistence.Transient;
 
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
  *
  * @author mbrunnli
  */
-public class SpecialEntity {
+public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
 
   private OfferEntity offer;
 
   private WeeklyPeriodEntity activePeriod;
 
   private Money specialPrice;
+
+  private static final long serialVersionUID = 1L;
 
   /**
    * Returns the {@link Offer} this special applies for.
@@ -59,7 +64,7 @@ public class SpecialEntity {
 
   /**
    * Returns the new {@link Money special price} for the {@link Offer}.
-   * 
+   *
    * @return specialPrice the new {@link Money special price} for the {@link Offer}.
    */
   public Money getSpecialPrice() {
@@ -69,12 +74,76 @@ public class SpecialEntity {
 
   /**
    * Sets the new {@link Money special price} for the {@link Offer}.
-   * 
+   *
    * @param specialPrice the new {@link Money special price} for the {@link Offer}.
    */
   public void setSpecialPrice(Money specialPrice) {
 
     this.specialPrice = specialPrice;
+  }
+
+  /**
+   * Returns the {@link Special}s ID.
+   *
+   * @return the {@link Special}s ID
+   */
+  @Override
+  @Transient
+  public Long getOfferId() {
+
+    if (this.offer == null) {
+      return null;
+    }
+    return this.offer.getId();
+  }
+
+  /**
+   * Sets a new {@link Special} with the given ID.
+   *
+   * @param OfferId of the {@link Special} to be set
+   */
+  @Override
+  public void setOfferId(Long OfferId) {
+
+    if (OfferId == null) {
+      this.offer = null;
+    } else {
+      OfferEntity offerEntity = new OfferEntity();
+      offerEntity.setId(OfferId);
+      this.offer = offerEntity;
+    }
+  }
+
+  /**
+   * Returns the {@link Special}s ID.
+   *
+   * @return the {@link Special}s ID
+   */
+  @Override
+  @Transient
+  public Long getActivePeriodId() {
+
+    if (this.activePeriod == null) {
+      return null;
+    }
+    return this.activePeriod.getId();
+  }
+
+  /**
+   * Sets a new {@link Special} with the given ID.
+   *
+   * @param ActivePeriodId of the {@link Special} to be set
+   */
+  @Override
+  public void setActivePeriodId(Long ActivePeriodId) {
+
+    if (ActivePeriodId == null) {
+      this.activePeriod = null;
+    } else {
+      WeeklyPeriodEntity weeklyPeriodEntity = new WeeklyPeriodEntity();
+      weeklyPeriodEntity.setId(ActivePeriodId);
+      this.activePeriod = weeklyPeriodEntity;
+    }
   }
 
 }
