@@ -7,11 +7,18 @@ import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
 
 import javax.persistence.Transient;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import org.hibernate.envers.Audited;
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
  *
  * @author mbrunnli
  */
+@Entity(name = "Special")
+@Table(name = "Special")
+@Audited
 public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
 
   private OfferEntity offer;
