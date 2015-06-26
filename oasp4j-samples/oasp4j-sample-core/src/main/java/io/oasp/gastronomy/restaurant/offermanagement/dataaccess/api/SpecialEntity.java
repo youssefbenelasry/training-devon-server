@@ -5,12 +5,12 @@ import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersisten
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
 
-import javax.persistence.Transient;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.envers.Audited;
+
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
  *
