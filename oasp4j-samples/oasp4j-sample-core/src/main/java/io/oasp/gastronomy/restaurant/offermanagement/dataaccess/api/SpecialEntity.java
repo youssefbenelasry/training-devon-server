@@ -6,6 +6,7 @@ import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -37,6 +38,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    * @return name the name of the {@link Special}.
    */
   @Override
+  @Column(unique = true)
   public String getName() {
 
     return this.name;
