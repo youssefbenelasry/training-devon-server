@@ -23,7 +23,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
 
   private OfferEntity offer;
 
-  private WeeklyPeriodEntity activePeriod;
+  private WeeklyPeriodEmbeddable activePeriod;
 
   private Money specialPrice;
 
@@ -50,21 +50,21 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * Returns the {@link WeeklyPeriodEntity active period} this special applies for.
+   * Returns the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    *
-   * @return activePeriod the {@link WeeklyPeriodEntity active period} this special applies for.
+   * @return activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public WeeklyPeriodEntity getActivePeriod() {
+  public WeeklyPeriodEmbeddable getActivePeriod() {
 
     return this.activePeriod;
   }
 
   /**
-   * Sets the {@link WeeklyPeriodEntity active period} this special applies for.
+   * Sets the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    *
-   * @param activePeriod the {@link WeeklyPeriodEntity active period} this special applies for.
+   * @param activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public void setActivePeriod(WeeklyPeriodEntity activePeriod) {
+  public void setActivePeriod(WeeklyPeriodEmbeddable activePeriod) {
 
     this.activePeriod = activePeriod;
   }
@@ -74,6 +74,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @return specialPrice the new {@link Money special price} for the {@link Offer}.
    */
+  @Override
   public Money getSpecialPrice() {
 
     return this.specialPrice;
@@ -84,6 +85,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @param specialPrice the new {@link Money special price} for the {@link Offer}.
    */
+  @Override
   public void setSpecialPrice(Money specialPrice) {
 
     this.specialPrice = specialPrice;
@@ -118,38 +120,6 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
       OfferEntity offerEntity = new OfferEntity();
       offerEntity.setId(OfferId);
       this.offer = offerEntity;
-    }
-  }
-
-  /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
-   */
-  @Override
-  @Transient
-  public Long getActivePeriodId() {
-
-    if (this.activePeriod == null) {
-      return null;
-    }
-    return this.activePeriod.getId();
-  }
-
-  /**
-   * Sets a new {@link Special} with the given ID.
-   *
-   * @param ActivePeriodId of the {@link Special} to be set
-   */
-  @Override
-  public void setActivePeriodId(Long ActivePeriodId) {
-
-    if (ActivePeriodId == null) {
-      this.activePeriod = null;
-    } else {
-      WeeklyPeriodEntity weeklyPeriodEntity = new WeeklyPeriodEntity();
-      weeklyPeriodEntity.setId(ActivePeriodId);
-      this.activePeriod = weeklyPeriodEntity;
     }
   }
 

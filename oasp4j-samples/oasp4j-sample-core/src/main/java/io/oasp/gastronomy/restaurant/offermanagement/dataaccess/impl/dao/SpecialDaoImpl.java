@@ -45,11 +45,6 @@ public class SpecialDaoImpl extends ApplicationDaoImpl<SpecialEntity> implements
       query.where(Alias.$(special.getOfferId()).eq(offer));
     }
 
-    Long activePeriod = criteria.getActivePeriodId();
-    if (activePeriod != null) {
-      query.where(Alias.$(special.getActivePeriodId()).eq(activePeriod));
-    }
-
     Money specialPrice = criteria.getSpecialPrice();
     if (specialPrice != null) {
       query.where(Alias.$(special.getSpecialPrice()).eq(specialPrice));

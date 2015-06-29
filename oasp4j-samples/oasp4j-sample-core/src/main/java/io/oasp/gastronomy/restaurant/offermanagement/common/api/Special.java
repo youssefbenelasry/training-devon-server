@@ -14,24 +14,10 @@ public interface Special extends ApplicationEntity {
 
   /**
    * Sets a new {@link Special} with the given ID.
-   * 
+   *
    * @param OfferId of the {@link Special} to be set
    */
   void setOfferId(Long OfferId);
-
-  /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
-   */
-  Long getActivePeriodId();
-
-  /**
-   * Sets a new {@link Special} with the given ID.
-   * 
-   * @param ActivePeriodId of the {@link Special} to be set
-   */
-  void setActivePeriodId(Long ActivePeriodId);
 
   Money getSpecialPrice();
 

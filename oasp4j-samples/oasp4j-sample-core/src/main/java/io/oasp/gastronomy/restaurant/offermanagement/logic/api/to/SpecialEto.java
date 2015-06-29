@@ -23,7 +23,7 @@ public class SpecialEto extends AbstractEto implements Special {
   @Override
   public Long getOfferId() {
 
-    return offerId;
+    return this.offerId;
   }
 
   /**
@@ -39,27 +39,9 @@ public class SpecialEto extends AbstractEto implements Special {
    * {@inheritDoc}
    */
   @Override
-  public Long getActivePeriodId() {
-
-    return activePeriodId;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setActivePeriodId(Long activePeriodId) {
-
-    this.activePeriodId = activePeriodId;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
   public Money getSpecialPrice() {
 
-    return specialPrice;
+    return this.specialPrice;
   }
 
   /**
