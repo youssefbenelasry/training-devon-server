@@ -6,11 +6,10 @@ import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.hibernate.envers.Audited;
 
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
@@ -19,12 +18,12 @@ import org.hibernate.envers.Audited;
  */
 @Entity(name = "Special")
 @Table(name = "Special")
-@Audited
 public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
 
   private OfferEntity offer;
 
-  private WeeklyPeriod activePeriod;
+  @Embedded
+  private WeeklyPeriodEmbeddable activePeriod;
 
   private Money specialPrice;
 
@@ -55,7 +54,8 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @return activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public WeeklyPeriod getActivePeriod() {
+  @Override
+  public WeeklyPeriodEmbeddable getActivePeriod() {
 
     return this.activePeriod;
   }
@@ -65,9 +65,10 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @param activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
+  @Override
   public void setActivePeriod(WeeklyPeriod activePeriod) {
 
-    this.activePeriod = activePeriod;
+    this.activePeriod = (WeeklyPeriodEmbeddable) activePeriod;
   }
 
   /**
@@ -75,6 +76,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @return specialPrice the new {@link Money special price} for the {@link Offer}.
    */
+  @Override
   public Money getSpecialPrice() {
 
     return this.specialPrice;
@@ -85,6 +87,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @param specialPrice the new {@link Money special price} for the {@link Offer}.
    */
+  @Override
   public void setSpecialPrice(Money specialPrice) {
 
     this.specialPrice = specialPrice;
