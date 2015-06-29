@@ -1,6 +1,7 @@
 package io.oasp.gastronomy.restaurant.offermanagement.logic.api.to;
 
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 import io.oasp.module.jpa.common.api.to.SearchCriteriaTo;
 
 /**
@@ -14,7 +15,7 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
 
   private Long offerId;
 
-  private Long activePeriodId;
+  private WeeklyPeriod activePeriod;
 
   private Money specialPrice;
 
@@ -36,14 +37,14 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
     this.offerId = offerId;
   }
 
-  public Long getActivePeriodId() {
+  public WeeklyPeriod getActivePeriod() {
 
-    return activePeriodId;
+    return activePeriod;
   }
 
-  public void setActivePeriodId(Long activePeriodId) {
+  public void setActivePeriod(WeeklyPeriod activePeriod) {
 
-    this.activePeriodId = activePeriodId;
+    this.activePeriod = activePeriod;
   }
 
   public Money getSpecialPrice() {

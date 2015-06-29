@@ -4,6 +4,7 @@ import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -23,7 +24,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
 
   private OfferEntity offer;
 
-  private WeeklyPeriodEmbeddable activePeriod;
+  private WeeklyPeriod activePeriod;
 
   private Money specialPrice;
 
@@ -54,7 +55,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @return activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public WeeklyPeriodEmbeddable getActivePeriod() {
+  public WeeklyPeriod getActivePeriod() {
 
     return this.activePeriod;
   }
@@ -64,7 +65,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @param activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public void setActivePeriod(WeeklyPeriodEmbeddable activePeriod) {
+  public void setActivePeriod(WeeklyPeriod activePeriod) {
 
     this.activePeriod = activePeriod;
   }
@@ -74,7 +75,6 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @return specialPrice the new {@link Money special price} for the {@link Offer}.
    */
-  @Override
   public Money getSpecialPrice() {
 
     return this.specialPrice;
@@ -85,16 +85,13 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @param specialPrice the new {@link Money special price} for the {@link Offer}.
    */
-  @Override
   public void setSpecialPrice(Money specialPrice) {
 
     this.specialPrice = specialPrice;
   }
 
   /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
+   * {@inheritDoc}
    */
   @Override
   @Transient
@@ -107,18 +104,16 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * Sets a new {@link Special} with the given ID.
-   *
-   * @param OfferId of the {@link Special} to be set
+   * {@inheritDoc}
    */
   @Override
-  public void setOfferId(Long OfferId) {
+  public void setOfferId(Long offerId) {
 
-    if (OfferId == null) {
+    if (offerId == null) {
       this.offer = null;
     } else {
       OfferEntity offerEntity = new OfferEntity();
-      offerEntity.setId(OfferId);
+      offerEntity.setId(offerId);
       this.offer = offerEntity;
     }
   }
