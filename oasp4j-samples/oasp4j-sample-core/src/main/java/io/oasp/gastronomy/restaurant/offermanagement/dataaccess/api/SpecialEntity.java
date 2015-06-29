@@ -20,6 +20,8 @@ import javax.persistence.Transient;
 @Table(name = "Special")
 public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
 
+  private String name;
+
   private OfferEntity offer;
 
   @Embedded
@@ -28,6 +30,28 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   private Money specialPrice;
 
   private static final long serialVersionUID = 1L;
+
+  /**
+   * Returns the name of the {@link Special}.
+   *
+   * @return name the name of the {@link Special}.
+   */
+  @Override
+  public String getName() {
+
+    return this.name;
+  }
+
+  /**
+   * Sets the name of the special.
+   *
+   * @param name the name of the special.
+   */
+  @Override
+  public void setName(String name) {
+
+    this.name = name;
+  }
 
   /**
    * Returns the {@link Offer} this special applies for.

@@ -18,6 +18,8 @@ public class SpecialEto extends AbstractEto implements Special {
 
   private Money specialPrice;
 
+  private String name;
+
   /**
    * {@inheritDoc}
    */
@@ -120,4 +122,23 @@ public class SpecialEto extends AbstractEto implements Special {
     }
     return true;
   }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String getName() {
+
+    return name;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setName(String name) {
+
+    this.name = name;
+  }
+
 }
