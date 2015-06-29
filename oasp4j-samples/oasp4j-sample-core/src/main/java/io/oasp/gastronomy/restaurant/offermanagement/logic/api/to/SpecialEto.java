@@ -12,13 +12,31 @@ public class SpecialEto extends AbstractEto implements Special {
 
   private static final long serialVersionUID = 1L;
 
+  private String name;
+
   private Long offerId;
 
-  private WeeklyPeriod activePeriod;
+  private WeeklyPeriodEto activePeriod;
 
   private Money specialPrice;
 
-  private String name;
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public String getName() {
+
+    return this.name;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setName(String name) {
+
+    this.name = name;
+  }
 
   /**
    * {@inheritDoc}
@@ -26,7 +44,7 @@ public class SpecialEto extends AbstractEto implements Special {
   @Override
   public Long getOfferId() {
 
-    return offerId;
+    return this.offerId;
   }
 
   /**
@@ -38,22 +56,16 @@ public class SpecialEto extends AbstractEto implements Special {
     this.offerId = offerId;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public WeeklyPeriod getActivePeriod() {
 
-    return activePeriod;
+    return this.activePeriod;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
   public void setActivePeriod(WeeklyPeriod activePeriod) {
 
-    this.activePeriod = activePeriod;
+    this.activePeriod = (WeeklyPeriodEto) activePeriod;
   }
 
   /**
@@ -62,7 +74,7 @@ public class SpecialEto extends AbstractEto implements Special {
   @Override
   public Money getSpecialPrice() {
 
-    return specialPrice;
+    return this.specialPrice;
   }
 
   /**
@@ -79,6 +91,7 @@ public class SpecialEto extends AbstractEto implements Special {
 
     final int prime = 31;
     int result = super.hashCode();
+    result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
     result = prime * result + ((this.offerId == null) ? 0 : this.offerId.hashCode());
     result = prime * result + ((this.activePeriod == null) ? 0 : this.activePeriod.hashCode());
     result = prime * result + ((this.specialPrice == null) ? 0 : this.specialPrice.hashCode());
@@ -99,6 +112,13 @@ public class SpecialEto extends AbstractEto implements Special {
       return false;
     }
     SpecialEto other = (SpecialEto) obj;
+    if (this.name == null) {
+      if (other.name != null) {
+        return false;
+      }
+    } else if (!this.name.equals(other.name)) {
+      return false;
+    }
     if (this.offerId == null) {
       if (other.offerId != null) {
         return false;
@@ -121,24 +141,6 @@ public class SpecialEto extends AbstractEto implements Special {
       return false;
     }
     return true;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public String getName() {
-
-    return name;
-  }
-
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void setName(String name) {
-
-    this.name = name;
   }
 
 }

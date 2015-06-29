@@ -1,24 +1,24 @@
 package io.oasp.gastronomy.restaurant.offermanagement.logic.api.to;
 
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
-import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 import io.oasp.module.jpa.common.api.to.SearchCriteriaTo;
 
 /**
  * This is the {@link SearchCriteriaTo search criteria} {@link net.sf.mmm.util.transferobject.api.TransferObject TO}
  * used to find {@link io.oasp.gastronomy.restaurant.offermanagement.common.api.Special}s.
+ *
  */
 public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
 
   private static final long serialVersionUID = 1L;
 
+  private String name;
+
   private Long offerId;
 
-  private WeeklyPeriod activePeriod;
+  private WeeklyPeriodSearchCriteriaTo activePeriod;
 
   private Money specialPrice;
-
-  private String name;
 
   /**
    * The constructor.
@@ -26,6 +26,16 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
   public SpecialSearchCriteriaTo() {
 
     super();
+  }
+
+  public String getName() {
+
+    return name;
+  }
+
+  public void setName(String name) {
+
+    this.name = name;
   }
 
   public Long getOfferId() {
@@ -38,12 +48,12 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
     this.offerId = offerId;
   }
 
-  public WeeklyPeriod getActivePeriod() {
+  public WeeklyPeriodSearchCriteriaTo getActivePeriod() {
 
     return activePeriod;
   }
 
-  public void setActivePeriod(WeeklyPeriod activePeriod) {
+  public void setActivePeriod(WeeklyPeriodSearchCriteriaTo activePeriod) {
 
     this.activePeriod = activePeriod;
   }
@@ -56,16 +66,6 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
   public void setSpecialPrice(Money specialPrice) {
 
     this.specialPrice = specialPrice;
-  }
-
-  public String getName() {
-
-    return name;
-  }
-
-  public void setName(String name) {
-
-    this.name = name;
   }
 
 }
