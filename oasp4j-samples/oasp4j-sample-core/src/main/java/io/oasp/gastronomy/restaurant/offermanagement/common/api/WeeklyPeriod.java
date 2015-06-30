@@ -1,10 +1,14 @@
 package io.oasp.gastronomy.restaurant.offermanagement.common.api;
 
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.datatype.DayOfWeek;
+import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.WeeklyPeriodEto;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * Common interface for WeeklyPeriodEmbeddable.
  */
+@JsonDeserialize(as = WeeklyPeriodEto.class)
 public interface WeeklyPeriod {
 
   /**

@@ -57,7 +57,7 @@ public class SpecialEto extends AbstractEto implements Special {
   }
 
   @Override
-  public WeeklyPeriod getActivePeriod() {
+  public WeeklyPeriodEto getActivePeriod() {
 
     return this.activePeriod;
   }
