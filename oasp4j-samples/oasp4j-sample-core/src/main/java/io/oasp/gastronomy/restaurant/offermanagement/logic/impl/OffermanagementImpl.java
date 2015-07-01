@@ -9,7 +9,6 @@ import io.oasp.gastronomy.restaurant.offermanagement.common.api.exception.OfferE
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.OfferEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.ProductEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.SpecialEntity;
-import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.WeeklyPeriodEmbeddable;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.dao.DrinkDao;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.dao.MealDao;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.dao.OfferDao;
@@ -31,7 +30,6 @@ import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.ProductSortBy;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.SideDishEto;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.SpecialEto;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.SpecialSearchCriteriaTo;
-import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.WeeklyPeriodEto;
 import io.oasp.module.jpa.common.api.to.PaginatedListTo;
 
 import java.sql.Blob;
@@ -507,9 +505,8 @@ public class OffermanagementImpl extends AbstractComponentFacade implements Offe
     LOG.debug("Get Special with id {} from database.", id);
     SpecialEntity specialEntity = getSpecialDao().findOne(id);
     SpecialEto specialEto = null;
-    if(specialEntity != null) {
+    if (specialEntity != null) {
       specialEto = getBeanMapper().map(specialEntity, SpecialEto.class);
-      specialEto.setActivePeriod(getBeanMapper().map(specialEntity.getActivePeriod(), WeeklyPeriodEto.class));
     }
     return specialEto;
   }
@@ -536,15 +533,12 @@ public class OffermanagementImpl extends AbstractComponentFacade implements Offe
 
     Objects.requireNonNull(special, "special");
     SpecialEntity specialEntity = getBeanMapper().map(special, SpecialEntity.class);
-    specialEntity.setActivePeriod(getBeanMapper().map(special.getActivePeriod(), WeeklyPeriodEmbeddable.class));
 
     // initialize, validate specialEntity here if necessary
     getSpecialDao().save(specialEntity);
     LOG.debug("Special with id '{}' has been created.", specialEntity.getId());
 
-    SpecialEto specialEto = getBeanMapper().map(specialEntity, SpecialEto.class);
-    specialEto.setActivePeriod(getBeanMapper().map(specialEntity.getActivePeriod(), WeeklyPeriodEto.class));
-    return specialEto;
+    return getBeanMapper().map(specialEntity, SpecialEto.class);
   }
 
   /**
