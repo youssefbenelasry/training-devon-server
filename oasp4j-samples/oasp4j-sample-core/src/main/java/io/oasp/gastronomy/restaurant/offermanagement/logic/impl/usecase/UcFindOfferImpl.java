@@ -111,6 +111,7 @@ public class UcFindOfferImpl extends AbstractOfferUc implements UcFindOffer {
    * @param ucFindProduct new value of {@link #getucFindProduct}.
    */
   @Inject
+  @UseCase
   public void setUcFindProduct(UcFindProduct ucFindProduct) {
 
     this.ucFindProduct = ucFindProduct;

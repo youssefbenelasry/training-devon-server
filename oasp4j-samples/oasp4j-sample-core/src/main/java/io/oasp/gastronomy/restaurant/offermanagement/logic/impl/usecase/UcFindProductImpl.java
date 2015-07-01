@@ -175,6 +175,7 @@ public class UcFindProductImpl extends AbstractProductUc implements UcFindProduc
    * @param ucManageBinaryObject new value of {@link #getucManageBinaryObject}.
    */
   @Inject
+  @UseCase
   public void setUcManageBinaryObject(UcManageBinaryObject ucManageBinaryObject) {
 
     this.ucManageBinaryObject = ucManageBinaryObject;

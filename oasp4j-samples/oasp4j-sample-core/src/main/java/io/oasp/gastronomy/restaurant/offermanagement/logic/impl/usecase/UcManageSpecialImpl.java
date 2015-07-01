@@ -47,4 +47,5 @@ public class UcManageSpecialImpl extends AbstractSpecialUc implements UcManageSp
     LOG.debug("Special with id '{}' has been created.", specialEntity.getId());
     return getBeanMapper().map(specialEntity, SpecialEto.class);
   }
+
 }

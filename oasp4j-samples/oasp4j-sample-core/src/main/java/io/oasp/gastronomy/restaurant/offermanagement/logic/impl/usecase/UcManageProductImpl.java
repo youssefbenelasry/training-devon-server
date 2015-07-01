@@ -156,6 +156,7 @@ public class UcManageProductImpl extends AbstractProductUc implements UcManagePr
    * @param ucManageBinaryObject new value of {@link #getucManageBinaryObject}.
    */
   @Inject
+  @UseCase
   public void setUcManageBinaryObject(UcManageBinaryObject ucManageBinaryObject) {
 
     this.ucManageBinaryObject = ucManageBinaryObject;
@@ -165,6 +166,7 @@ public class UcManageProductImpl extends AbstractProductUc implements UcManagePr
    * @param ucFindOffer new value of {@link #getucFindOffer}.
    */
   @Inject
+  @UseCase
   public void setUcFindOffer(UcFindOffer ucFindOffer) {
 
     this.ucFindOffer = ucFindOffer;

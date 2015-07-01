@@ -2,7 +2,6 @@ package io.oasp.gastronomy.restaurant.offermanagement.logic.impl;
 
 import io.oasp.gastronomy.restaurant.general.logic.api.to.BinaryObjectEto;
 import io.oasp.gastronomy.restaurant.general.logic.base.AbstractComponentFacade;
-import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.dao.SpecialDao;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.Offermanagement;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.DrinkEto;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.MealEto;
@@ -44,11 +43,6 @@ import org.slf4j.LoggerFactory;
 public class OffermanagementImpl extends AbstractComponentFacade implements Offermanagement {
 
   private static final Logger LOG = LoggerFactory.getLogger(OffermanagementImpl.class);
-
-  /**
-   * @see #getSpecialDao()
-   */
-  private SpecialDao specialDao;
 
   private UcFindOffer ucFindOffer;
 
