@@ -13,8 +13,6 @@ public class SpecialCto extends AbstractCto {
 
   private OfferEto offer;
 
-  private WeeklyPeriodEto activePeriod;
-
   public SpecialEto getSpecial() {
 
     return special;
@@ -33,16 +31,6 @@ public class SpecialCto extends AbstractCto {
   public void setOffer(OfferEto offer) {
 
     this.offer = offer;
-  }
-
-  public WeeklyPeriodEto getActivePeriod() {
-
-    return activePeriod;
-  }
-
-  public void setActivePeriod(WeeklyPeriodEto activePeriod) {
-
-    this.activePeriod = activePeriod;
   }
 
 }

@@ -3,6 +3,7 @@ package io.oasp.gastronomy.restaurant.offermanagement.logic.api.to;
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.common.api.to.AbstractEto;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 
 /**
  * Entity transport object of Special
@@ -11,9 +12,11 @@ public class SpecialEto extends AbstractEto implements Special {
 
   private static final long serialVersionUID = 1L;
 
+  private String name;
+
   private Long offerId;
 
-  private Long activePeriodId;
+  private WeeklyPeriodEto activePeriod;
 
   private Money specialPrice;
 
@@ -21,9 +24,27 @@ public class SpecialEto extends AbstractEto implements Special {
    * {@inheritDoc}
    */
   @Override
+  public String getName() {
+
+    return this.name;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public void setName(String name) {
+
+    this.name = name;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override
   public Long getOfferId() {
 
-    return offerId;
+    return this.offerId;
   }
 
   /**
@@ -35,22 +56,16 @@ public class SpecialEto extends AbstractEto implements Special {
     this.offerId = offerId;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public Long getActivePeriodId() {
+  public WeeklyPeriodEto getActivePeriod() {
 
-    return activePeriodId;
+    return this.activePeriod;
   }
 
-  /**
-   * {@inheritDoc}
-   */
   @Override
-  public void setActivePeriodId(Long activePeriodId) {
+  public void setActivePeriod(WeeklyPeriod activePeriod) {
 
-    this.activePeriodId = activePeriodId;
+    this.activePeriod = (WeeklyPeriodEto) activePeriod;
   }
 
   /**
@@ -59,7 +74,7 @@ public class SpecialEto extends AbstractEto implements Special {
   @Override
   public Money getSpecialPrice() {
 
-    return specialPrice;
+    return this.specialPrice;
   }
 
   /**
@@ -76,8 +91,9 @@ public class SpecialEto extends AbstractEto implements Special {
 
     final int prime = 31;
     int result = super.hashCode();
+    result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
     result = prime * result + ((this.offerId == null) ? 0 : this.offerId.hashCode());
-    result = prime * result + ((this.activePeriodId == null) ? 0 : this.activePeriodId.hashCode());
+    result = prime * result + ((this.activePeriod == null) ? 0 : this.activePeriod.hashCode());
     result = prime * result + ((this.specialPrice == null) ? 0 : this.specialPrice.hashCode());
     return result;
   }
@@ -96,6 +112,13 @@ public class SpecialEto extends AbstractEto implements Special {
       return false;
     }
     SpecialEto other = (SpecialEto) obj;
+    if (this.name == null) {
+      if (other.name != null) {
+        return false;
+      }
+    } else if (!this.name.equals(other.name)) {
+      return false;
+    }
     if (this.offerId == null) {
       if (other.offerId != null) {
         return false;
@@ -103,11 +126,11 @@ public class SpecialEto extends AbstractEto implements Special {
     } else if (!this.offerId.equals(other.offerId)) {
       return false;
     }
-    if (this.activePeriodId == null) {
-      if (other.activePeriodId != null) {
+    if (this.activePeriod == null) {
+      if (other.activePeriod != null) {
         return false;
       }
-    } else if (!this.activePeriodId.equals(other.activePeriodId)) {
+    } else if (!this.activePeriod.equals(other.activePeriod)) {
       return false;
     }
     if (this.specialPrice == null) {
@@ -119,4 +142,5 @@ public class SpecialEto extends AbstractEto implements Special {
     }
     return true;
   }
+
 }

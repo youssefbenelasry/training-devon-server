@@ -4,12 +4,14 @@ import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Offer;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.Special;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-
-import org.hibernate.envers.Audited;
 
 /**
  * The {@link ApplicationPersistenceEntity persistent entity} for a special.
@@ -18,22 +20,48 @@ import org.hibernate.envers.Audited;
  */
 @Entity(name = "Special")
 @Table(name = "Special")
-@Audited
 public class SpecialEntity extends ApplicationPersistenceEntity implements Special {
+
+  private String name;
 
   private OfferEntity offer;
 
-  private WeeklyPeriodEntity activePeriod;
+  @Embedded
+  private WeeklyPeriodEmbeddable activePeriod;
 
   private Money specialPrice;
 
   private static final long serialVersionUID = 1L;
 
   /**
+   * Returns the name of the {@link Special}.
+   *
+   * @return name the name of the {@link Special}.
+   */
+  @Override
+  @Column(unique = true)
+  public String getName() {
+
+    return this.name;
+  }
+
+  /**
+   * Sets the name of the special.
+   *
+   * @param name the name of the special.
+   */
+  @Override
+  public void setName(String name) {
+
+    this.name = name;
+  }
+
+  /**
    * Returns the {@link Offer} this special applies for.
    *
    * @return offer {@link Offer} this special applies for.
    */
+  @ManyToOne
   public OfferEntity getOffer() {
 
     return this.offer;
@@ -50,23 +78,25 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * Returns the {@link WeeklyPeriodEntity active period} this special applies for.
+   * Returns the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    *
-   * @return activePeriod the {@link WeeklyPeriodEntity active period} this special applies for.
+   * @return activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public WeeklyPeriodEntity getActivePeriod() {
+  @Override
+  public WeeklyPeriodEmbeddable getActivePeriod() {
 
     return this.activePeriod;
   }
 
   /**
-   * Sets the {@link WeeklyPeriodEntity active period} this special applies for.
+   * Sets the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    *
-   * @param activePeriod the {@link WeeklyPeriodEntity active period} this special applies for.
+   * @param activePeriod the {@link WeeklyPeriodEmbeddable active period} this special applies for.
    */
-  public void setActivePeriod(WeeklyPeriodEntity activePeriod) {
+  @Override
+  public void setActivePeriod(WeeklyPeriod activePeriod) {
 
-    this.activePeriod = activePeriod;
+    this.activePeriod = (WeeklyPeriodEmbeddable) activePeriod;
   }
 
   /**
@@ -74,6 +104,7 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @return specialPrice the new {@link Money special price} for the {@link Offer}.
    */
+  @Override
   public Money getSpecialPrice() {
 
     return this.specialPrice;
@@ -84,15 +115,14 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
    *
    * @param specialPrice the new {@link Money special price} for the {@link Offer}.
    */
+  @Override
   public void setSpecialPrice(Money specialPrice) {
 
     this.specialPrice = specialPrice;
   }
 
   /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
+   * {@inheritDoc}
    */
   @Override
   @Transient
@@ -105,51 +135,17 @@ public class SpecialEntity extends ApplicationPersistenceEntity implements Speci
   }
 
   /**
-   * Sets a new {@link Special} with the given ID.
-   *
-   * @param OfferId of the {@link Special} to be set
+   * {@inheritDoc}
    */
   @Override
-  public void setOfferId(Long OfferId) {
+  public void setOfferId(Long offerId) {
 
-    if (OfferId == null) {
+    if (offerId == null) {
       this.offer = null;
     } else {
       OfferEntity offerEntity = new OfferEntity();
-      offerEntity.setId(OfferId);
+      offerEntity.setId(offerId);
       this.offer = offerEntity;
-    }
-  }
-
-  /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
-   */
-  @Override
-  @Transient
-  public Long getActivePeriodId() {
-
-    if (this.activePeriod == null) {
-      return null;
-    }
-    return this.activePeriod.getId();
-  }
-
-  /**
-   * Sets a new {@link Special} with the given ID.
-   *
-   * @param ActivePeriodId of the {@link Special} to be set
-   */
-  @Override
-  public void setActivePeriodId(Long ActivePeriodId) {
-
-    if (ActivePeriodId == null) {
-      this.activePeriod = null;
-    } else {
-      WeeklyPeriodEntity weeklyPeriodEntity = new WeeklyPeriodEntity();
-      weeklyPeriodEntity.setId(ActivePeriodId);
-      this.activePeriod = weeklyPeriodEntity;
     }
   }
 

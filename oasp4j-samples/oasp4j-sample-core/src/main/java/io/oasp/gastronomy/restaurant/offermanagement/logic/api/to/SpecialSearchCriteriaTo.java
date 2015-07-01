@@ -12,9 +12,11 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
 
   private static final long serialVersionUID = 1L;
 
+  private String name;
+
   private Long offerId;
 
-  private Long activePeriodId;
+  private WeeklyPeriodSearchCriteriaTo activePeriod;
 
   private Money specialPrice;
 
@@ -24,6 +26,16 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
   public SpecialSearchCriteriaTo() {
 
     super();
+  }
+
+  public String getName() {
+
+    return name;
+  }
+
+  public void setName(String name) {
+
+    this.name = name;
   }
 
   public Long getOfferId() {
@@ -36,14 +48,14 @@ public class SpecialSearchCriteriaTo extends SearchCriteriaTo {
     this.offerId = offerId;
   }
 
-  public Long getActivePeriodId() {
+  public WeeklyPeriodSearchCriteriaTo getActivePeriod() {
 
-    return activePeriodId;
+    return activePeriod;
   }
 
-  public void setActivePeriodId(Long activePeriodId) {
+  public void setActivePeriod(WeeklyPeriodSearchCriteriaTo activePeriod) {
 
-    this.activePeriodId = activePeriodId;
+    this.activePeriod = activePeriod;
   }
 
   public Money getSpecialPrice() {

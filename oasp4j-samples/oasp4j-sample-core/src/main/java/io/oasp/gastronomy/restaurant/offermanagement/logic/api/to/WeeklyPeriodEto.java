@@ -139,4 +139,5 @@ public class WeeklyPeriodEto extends AbstractEto implements WeeklyPeriod {
     }
     return true;
   }
+
 }

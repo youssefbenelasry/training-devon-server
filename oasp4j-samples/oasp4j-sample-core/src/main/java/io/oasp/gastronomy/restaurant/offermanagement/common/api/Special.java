@@ -5,36 +5,20 @@ import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 
 public interface Special extends ApplicationEntity {
 
-  /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
-   */
-  Long getOfferId();
+  public Long getOfferId();
 
-  /**
-   * Sets a new {@link Special} with the given ID.
-   * 
-   * @param OfferId of the {@link Special} to be set
-   */
-  void setOfferId(Long OfferId);
+  public void setOfferId(Long offerId);
 
-  /**
-   * Returns the {@link Special}s ID.
-   *
-   * @return the {@link Special}s ID
-   */
-  Long getActivePeriodId();
+  public WeeklyPeriod getActivePeriod();
 
-  /**
-   * Sets a new {@link Special} with the given ID.
-   * 
-   * @param ActivePeriodId of the {@link Special} to be set
-   */
-  void setActivePeriodId(Long ActivePeriodId);
+  public void setActivePeriod(WeeklyPeriod activePeriod);
 
-  Money getSpecialPrice();
+  public Money getSpecialPrice();
 
-  void setSpecialPrice(Money specialPrice);
+  public void setSpecialPrice(Money specialPrice);
+
+  public String getName();
+
+  public void setName(String name);
 
 }

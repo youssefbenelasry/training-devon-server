@@ -1,15 +1,11 @@
 package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api;
 
-import io.oasp.gastronomy.restaurant.general.dataaccess.api.ApplicationPersistenceEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.datatype.DayOfWeek;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.Embeddable;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-
-import org.hibernate.envers.Audited;
 
 /**
  * Weekly period describing a starting and an ending point. Each is defined as a fixed hour (24h-format) at a specific
@@ -17,10 +13,8 @@ import org.hibernate.envers.Audited;
  *
  * @author mbrunnli
  */
-@Entity(name = "WeeklyPeriod")
-@Table(name = "WeeklyPeriod")
-@Audited
-public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements WeeklyPeriod {
+@Embeddable
+public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
 
   private DayOfWeek startingDay;
 
@@ -57,8 +51,8 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
    *
    * @return startingHour the hour (in 24h-format) the period starts.
    */
-  @Max(value = 24)
-  @Min(value = 0)
+  @Max(24)
+  @Min(0)
   public int getStartingHour() {
 
     return this.startingHour;
@@ -99,8 +93,8 @@ public class WeeklyPeriodEntity extends ApplicationPersistenceEntity implements 
    *
    * @return endingHour the hour (in 24h-format) the period ends.
    */
-  @Max(value = 24)
-  @Min(value = 0)
+  @Max(24)
+  @Min(0)
   public int getEndingHour() {
 
     return this.endingHour;
