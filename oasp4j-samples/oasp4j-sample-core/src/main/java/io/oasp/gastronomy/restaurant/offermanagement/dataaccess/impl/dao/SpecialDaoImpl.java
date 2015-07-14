@@ -2,9 +2,11 @@ package io.oasp.gastronomy.restaurant.offermanagement.dataaccess.impl.dao;
 
 import io.oasp.gastronomy.restaurant.general.common.api.datatype.Money;
 import io.oasp.gastronomy.restaurant.general.dataaccess.base.dao.ApplicationDaoImpl;
+import io.oasp.gastronomy.restaurant.offermanagement.common.api.datatype.DayOfWeek;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.SpecialEntity;
 import io.oasp.gastronomy.restaurant.offermanagement.dataaccess.api.dao.SpecialDao;
 import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.SpecialSearchCriteriaTo;
+import io.oasp.gastronomy.restaurant.offermanagement.logic.api.to.WeeklyPeriodSearchCriteriaTo;
 import io.oasp.module.jpa.common.api.to.PaginatedListTo;
 
 import javax.inject.Named;
@@ -43,6 +45,29 @@ public class SpecialDaoImpl extends ApplicationDaoImpl<SpecialEntity> implements
     Long offer = criteria.getOfferId();
     if (offer != null) {
       query.where(Alias.$(special.getOfferId()).eq(offer));
+    }
+
+    WeeklyPeriodSearchCriteriaTo weeklyPeriod = criteria.getActivePeriod();
+    if (weeklyPeriod != null) {
+      DayOfWeek startingDay = weeklyPeriod.getStartingDay();
+      if (startingDay != null) {
+        query.where(Alias.$(special.getActivePeriod().getStartingDay()).eq(startingDay));
+      }
+
+      Integer startingHour = weeklyPeriod.getStartingHour();
+      if (startingHour != null) {
+        query.where(Alias.$(special.getActivePeriod().getStartingHour()).eq(startingHour));
+      }
+
+      DayOfWeek endingDay = weeklyPeriod.getEndingDay();
+      if (endingDay != null) {
+        query.where(Alias.$(special.getActivePeriod().getEndingDay()).eq(endingDay));
+      }
+
+      Integer endingHour = weeklyPeriod.getEndingHour();
+      if (endingHour != null) {
+        query.where(Alias.$(special.getActivePeriod().getEndingHour()).eq(endingHour));
+      }
     }
 
     Money specialPrice = criteria.getSpecialPrice();

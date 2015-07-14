@@ -13,11 +13,11 @@ public class WeeklyPeriodSearchCriteriaTo extends SearchCriteriaTo {
 
   private DayOfWeek startingDay;
 
-  private int startingHour;
+  private Integer startingHour;
 
   private DayOfWeek endingDay;
 
-  private int endingHour;
+  private Integer endingHour;
 
   /**
    * The constructor.
@@ -29,7 +29,7 @@ public class WeeklyPeriodSearchCriteriaTo extends SearchCriteriaTo {
 
   public DayOfWeek getStartingDay() {
 
-    return startingDay;
+    return this.startingDay;
   }
 
   public void setStartingDay(DayOfWeek startingDay) {
@@ -37,19 +37,19 @@ public class WeeklyPeriodSearchCriteriaTo extends SearchCriteriaTo {
     this.startingDay = startingDay;
   }
 
-  public int getStartingHour() {
+  public Integer getStartingHour() {
 
-    return startingHour;
+    return this.startingHour;
   }
 
-  public void setStartingHour(int startingHour) {
+  public void setStartingHour(Integer startingHour) {
 
     this.startingHour = startingHour;
   }
 
   public DayOfWeek getEndingDay() {
 
-    return endingDay;
+    return this.endingDay;
   }
 
   public void setEndingDay(DayOfWeek endingDay) {
@@ -57,12 +57,12 @@ public class WeeklyPeriodSearchCriteriaTo extends SearchCriteriaTo {
     this.endingDay = endingDay;
   }
 
-  public int getEndingHour() {
+  public Integer getEndingHour() {
 
-    return endingHour;
+    return this.endingHour;
   }
 
-  public void setEndingHour(int endingHour) {
+  public void setEndingHour(Integer endingHour) {
 
     this.endingHour = endingHour;
   }
