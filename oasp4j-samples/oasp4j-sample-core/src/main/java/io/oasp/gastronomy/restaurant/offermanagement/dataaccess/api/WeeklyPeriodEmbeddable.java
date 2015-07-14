@@ -4,6 +4,8 @@ import io.oasp.gastronomy.restaurant.offermanagement.common.api.WeeklyPeriod;
 import io.oasp.gastronomy.restaurant.offermanagement.common.api.datatype.DayOfWeek;
 
 import javax.persistence.Embeddable;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
@@ -24,13 +26,13 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
 
   private int endingHour;
 
-  private static final long serialVersionUID = 1L;
-
   /**
    * Returns the {@link DayOfWeek} the period starts.
    *
    * @return startingDay the {@link DayOfWeek} the period starts.
    */
+  @Override
+  @Enumerated(EnumType.STRING)
   public DayOfWeek getStartingDay() {
 
     return this.startingDay;
@@ -41,6 +43,7 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @param startingDay the {@link DayOfWeek} the period starts.
    */
+  @Override
   public void setStartingDay(DayOfWeek startingDay) {
 
     this.startingDay = startingDay;
@@ -51,6 +54,7 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @return startingHour the hour (in 24h-format) the period starts.
    */
+  @Override
   @Max(24)
   @Min(0)
   public int getStartingHour() {
@@ -63,6 +67,7 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @param startingHour the hour (in 24h-format) the period starts.
    */
+  @Override
   public void setStartingHour(int startingHour) {
 
     this.startingHour = startingHour;
@@ -73,6 +78,8 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @return endingDay the {@link DayOfWeek} the period ends.
    */
+  @Override
+  @Enumerated(EnumType.STRING)
   public DayOfWeek getEndingDay() {
 
     return this.endingDay;
@@ -83,6 +90,7 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @param endingDay the {@link DayOfWeek} the period ends.
    */
+  @Override
   public void setEndingDay(DayOfWeek endingDay) {
 
     this.endingDay = endingDay;
@@ -93,6 +101,7 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @return endingHour the hour (in 24h-format) the period ends.
    */
+  @Override
   @Max(24)
   @Min(0)
   public int getEndingHour() {
@@ -105,6 +114,7 @@ public class WeeklyPeriodEmbeddable implements WeeklyPeriod {
    *
    * @param endingHour the hour (in 24h-format) the period ends.
    */
+  @Override
   public void setEndingHour(int endingHour) {
 
     this.endingHour = endingHour;
